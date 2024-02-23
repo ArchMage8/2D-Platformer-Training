@@ -101,10 +101,16 @@ public class Health : MonoBehaviour
                 GetComponentInParent<EnemyPatrol>().enabled = false;
             }
         }
+        else if(dead == true && gameObject.tag == "Player")
+        {
+            Respawn();
+        }
     }
 
     public void Respawn()
     {
+        dead = false;
+
         AddHealth(startingHealth);
         anim.ResetTrigger("Die");
         anim.Play("idle");
